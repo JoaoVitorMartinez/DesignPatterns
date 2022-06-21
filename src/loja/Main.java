@@ -17,7 +17,7 @@ public class Main {
         System.out.println(calculadoraImposto.calcular(orcamentoImposto, new ICMS()));
 
         // Testando Descontos
-        Orcamento orcamentoDesconto = new Orcamento(new BigDecimal("10"), 1);
+        Orcamento orcamentoDesconto = new Orcamento(new BigDecimal("1000"), 2);
         CalculadoraDescontos calculadoraDescontos = new CalculadoraDescontos();
 
         System.out.println(calculadoraDescontos.calcular(orcamentoDesconto));

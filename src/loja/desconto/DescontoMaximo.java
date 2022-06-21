@@ -11,10 +11,20 @@ public class DescontoMaximo extends Desconto{
     }
 
 
-    public BigDecimal calcular(Orcamento orcamento) {
-        if((orcamento.getValor().compareTo(new BigDecimal("1000")) > 0 ) && orcamento.getQtdItens() > 5){
-            return orcamento.getValor().multiply(new BigDecimal("10.0"));
-        }
-        return proximo.calcular(orcamento);
+//    public BigDecimal calcular(Orcamento orcamento) {
+//
+//            return ;
+//        }
+//        return proximo.calcular(orcamento);
+//    }
+
+    @Override
+    protected boolean verificarDesconto(Orcamento orcamento) {
+        return orcamento.getValor().intValue() > 999 && orcamento.getQtdItens() > 5;
+    }
+
+    @Override
+    protected BigDecimal aplicarDesconto(Orcamento orcamento) {
+        return orcamento.getValor().multiply(new BigDecimal("0.2"));
     }
 }
