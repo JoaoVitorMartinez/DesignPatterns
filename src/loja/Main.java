@@ -4,8 +4,12 @@ import loja.desconto.CalculadoraDescontos;
 import loja.imposto.CalculadoraImposto;
 import loja.imposto.ICMS;
 import loja.orcamento.Orcamento;
+import loja.orcamento.pedido.Pedido;
+import loja.orcamento.pedido.PedidoCommand;
+import loja.orcamento.pedido.PedidoHandler;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args){
@@ -22,11 +26,25 @@ public class Main {
 
         System.out.println(calculadoraDescontos.calcular(orcamentoDesconto));
 
+
+        // Aprovando e aplicando o desconto excepcional, depois mostrando o valor do orçamento
         orcamentoDesconto.aprovar();
 
         orcamentoDesconto.aplicarDescontoExcepcional();
 
         System.out.println(orcamentoDesconto.getValor());
+
+        //Criando um pedido
+
+        Pedido pedido = new Pedido("João Vitor ",orcamentoDesconto, LocalDateTime.now());
+
+        System.out.println(pedido.getOrcamento());
+
+        //Criando pedido com commandHandler
+        PedidoCommand pedidoCommand = new PedidoCommand("Juliana", new BigDecimal("2000"), 10);
+        PedidoHandler handler = new PedidoHandler();
+
+        handler.execute(pedidoCommand);
 
     }
 }
