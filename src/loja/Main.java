@@ -22,5 +22,11 @@ public class Main {
 
         System.out.println(calculadoraDescontos.calcular(orcamentoDesconto));
 
+        orcamentoDesconto.aprovar();
+
+        orcamentoDesconto.aplicarDescontoExcepcional();
+
+        System.out.println(orcamentoDesconto.getValor());
+
     }
 }
