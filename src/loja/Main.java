@@ -7,9 +7,15 @@ import loja.orcamento.Orcamento;
 import loja.orcamento.pedido.Pedido;
 import loja.orcamento.pedido.PedidoCommand;
 import loja.orcamento.pedido.PedidoHandler;
+import loja.orcamento.pedido.acoes.EnviarEmailPedido;
+import loja.orcamento.pedido.acoes.SalvaPedido;
+
+//teste
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
@@ -40,9 +46,9 @@ public class Main {
 
         System.out.println(pedido.getOrcamento());
 
-        //Criando pedido com commandHandler
+        //Criando pedido com commandHandler e Observer
         PedidoCommand pedidoCommand = new PedidoCommand("Juliana", new BigDecimal("2000"), 10);
-        PedidoHandler handler = new PedidoHandler();
+        PedidoHandler handler = new PedidoHandler(Arrays.asList(new EnviarEmailPedido(),new SalvaPedido()));
 
         handler.execute(pedidoCommand);
 
