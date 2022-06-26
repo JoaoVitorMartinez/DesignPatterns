@@ -14,10 +14,10 @@ public class PedidoHandler {
     }
 
     public void execute(PedidoCommand dados){
-        Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQtdItens());
+        Orcamento orcamento = new Orcamento();
+        orcamento.adicionarItem(dados.getItens());
         Pedido pedido = new Pedido(dados.getCliente(), orcamento, LocalDateTime.now());
-        System.out.println("Cliente: " +pedido.getCliente() + "\nValor do Pedido: "+  orcamento.getValor()+ "\nData: "+ pedido.getData());
-
+        System.out.println(pedido);
         acoes.forEach(a -> a.execute(pedido));
     }
 

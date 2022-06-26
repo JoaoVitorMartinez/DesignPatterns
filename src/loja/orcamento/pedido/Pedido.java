@@ -44,4 +44,9 @@ public class Pedido {
     public void setData(LocalDateTime data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente: " + this.cliente  + "\nValor do Pedido: "+  orcamento.getValor()+ "\nData: "+ this.data;
+    }
 }
