@@ -4,11 +4,13 @@ import loja.desconto.CalculadoraDescontos;
 import loja.imposto.CalculadoraImposto;
 import loja.imposto.ICMS;
 import loja.orcamento.Orcamento;
+import loja.orcamento.RegistroOrcamento;
 import loja.orcamento.pedido.Pedido;
 import loja.orcamento.pedido.PedidoCommand;
 import loja.orcamento.pedido.PedidoHandler;
 import loja.orcamento.pedido.acoes.EnviarEmailPedido;
 import loja.orcamento.pedido.acoes.SalvaPedido;
+import loja.requisicao.http.JavaHttpClient;
 
 //teste
 
@@ -51,6 +53,12 @@ public class Main {
         PedidoHandler handler = new PedidoHandler(Arrays.asList(new EnviarEmailPedido(),new SalvaPedido()));
 
         handler.execute(pedidoCommand);
+
+        //Requisição HTTP
+
+        RegistroOrcamento registrarOrcamento = new RegistroOrcamento(new JavaHttpClient());
+
+        registrarOrcamento.registrar(orcamentoDesconto);
 
     }
 }
