@@ -6,6 +6,7 @@ import loja.imposto.ICMS;
 import loja.imposto.ISS;
 import loja.orcamento.ItemOrcamento;
 import loja.orcamento.Orcamento;
+import loja.orcamento.OrcamentoProxy;
 import loja.orcamento.RegistroOrcamento;
 import loja.orcamento.pedido.Pedido;
 import loja.orcamento.pedido.PedidoCommand;
@@ -77,6 +78,29 @@ public class Main {
         RegistroOrcamento registrarOrcamento = new RegistroOrcamento(new JavaHttpClient());
 
         registrarOrcamento.registrar(orcamentoDesconto);
+
+        //Testando Composite
+
+        Orcamento antigo = new Orcamento();
+        antigo.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
+
+        Orcamento novo = new Orcamento();
+        novo.adicionarItem(new ItemOrcamento(new BigDecimal("500")));
+
+        novo.adicionarItem(antigo);
+
+        System.out.println(novo.getValor() + " " + novo.getQtdItens());
+
+        //Testando o Proxy
+
+
+        Orcamento orc =new Orcamento();
+        orc.adicionarItem(item2);
+        OrcamentoProxy proxy = new OrcamentoProxy(orc);
+        System.out.println(proxy.getValor());
+        System.out.println(proxy.getValor());
+
+
 
     }
 }
