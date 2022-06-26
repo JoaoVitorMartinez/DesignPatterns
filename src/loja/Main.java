@@ -3,6 +3,7 @@ package loja;
 import loja.desconto.CalculadoraDescontos;
 import loja.imposto.CalculadoraImposto;
 import loja.imposto.ICMS;
+import loja.imposto.ISS;
 import loja.orcamento.Orcamento;
 import loja.orcamento.RegistroOrcamento;
 import loja.orcamento.pedido.Pedido;
@@ -26,7 +27,7 @@ public class Main {
         Orcamento orcamentoImposto = new Orcamento(new BigDecimal("100"), 5);
         CalculadoraImposto calculadoraImposto = new CalculadoraImposto();
 
-        System.out.println(calculadoraImposto.calcular(orcamentoImposto, new ICMS()));
+        System.out.println(calculadoraImposto.calcular(orcamentoImposto, new ICMS(new ISS(null))));
 
         // Testando Descontos
         Orcamento orcamentoDesconto = new Orcamento(new BigDecimal("1000"), 2);
