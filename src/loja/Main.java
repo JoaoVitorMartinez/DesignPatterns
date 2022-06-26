@@ -11,6 +11,7 @@ import loja.orcamento.pedido.Pedido;
 import loja.orcamento.pedido.PedidoCommand;
 import loja.orcamento.pedido.PedidoHandler;
 import loja.orcamento.pedido.acoes.EnviarEmailPedido;
+import loja.orcamento.pedido.acoes.LogPedidos;
 import loja.orcamento.pedido.acoes.SalvaPedido;
 import loja.requisicao.http.JavaHttpClient;
 
@@ -67,7 +68,7 @@ public class Main {
 
         //Criando pedido com commandHandler e Observer
         PedidoCommand pedidoCommand = new PedidoCommand("Juliana", item3);
-        PedidoHandler handler = new PedidoHandler(Arrays.asList(new EnviarEmailPedido(),new SalvaPedido()));
+        PedidoHandler handler = new PedidoHandler(Arrays.asList(new EnviarEmailPedido(),new SalvaPedido(), new LogPedidos()));
 
         handler.execute(pedidoCommand);
 
